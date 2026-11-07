@@ -1,0 +1,29 @@
+name: camera_guard
+description: 防篡改相机 —— 拍摄完成即自动哈希+非对称签名打包（SimpleGuard）
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.13.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  camera: ^0.11.0
+  path_provider: ^2.1.4
+  flutter_secure_storage: ^9.2.2
+  share_plus: ^10.1.4
+  file_picker: ^8.1.2
+  qr_flutter: ^4.1.0
+  path: ^1.9.0
+  simple_guard_dart:
+    path: ../../packages/simple_guard_dart
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true

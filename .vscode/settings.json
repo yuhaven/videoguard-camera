@@ -1,0 +1,40 @@
+{
+  // Flutter/Dart SDK 指向本仓库 tools 下的本地安装（不依赖 PATH）
+  "dart.flutterSdkPath": "D:/dsh/VideoSercet/tools/flutter",
+  "dart.sdkPath": "D:/dsh/VideoSercet/tools/flutter/bin/cache/dart-sdk",
+  // pub 走国内镜像（本机网络环境需要）
+  "dart.env": {
+    "PUB_HOSTED_URL": "https://pub.flutter-io.cn",
+    "FLUTTER_STORAGE_BASE_URL": "https://storage.flutter-io.cn",
+    "JAVA_HOME": "D:/dsh/VideoSercet/tools/jdk17",
+    "ANDROID_HOME": "D:/dsh/VideoSercet/tools/android-sdk"
+  },
+  "files.exclude": {
+    "**/build": true,
+    "**/.dart_tool": true,
+    "**/.gradle": true,
+    "tools/flutter": true,
+    "tools/android-sdk": true,
+    "tools/jdk17": true,
+    "tools/jdk-tmp": true
+  },
+  "search.exclude": {
+    "**/build": true,
+    "**/.dart_tool": true,
+    "tools": true,
+    "demo/out": true,
+    "demo/out_simple": true
+  },
+  "files.watcherExclude": {
+    "**/build/**": true,
+    "**/.dart_tool/**": true,
+    "tools/**": true,
+    "demo/out*/**": true
+  },
+  "dart.previewFlutterUiGuides": true,
+  "dart.lineLength": 100,
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.rulers": [100]
+  }
+}

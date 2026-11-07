@@ -1,0 +1,8 @@
+* text=auto
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.jks binary
+*.apk binary
+*.pcm binary

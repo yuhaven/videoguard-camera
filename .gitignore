@@ -1,0 +1,28 @@
+# ---- 本机工具链（体积巨大，克隆后运行 tools/setup_android.ps1 重建）----
+tools/
+
+# ---- 构建产物 ----
+**/build/
+**/.dart_tool/
+**/.gradle/
+**/*.pyc
+__pycache__/
+
+# ---- 演示生成的媒体与日志（保留报告 .md，运行 demo 可重新生成）----
+demo/out/**
+demo/out_simple/**
+!demo/out/report.md
+!demo/out_simple/report.md
+
+# ---- 分发目录（APK 走 GitHub Releases）----
+dist/
+
+# ---- IDE / 系统 ----
+.idea/
+*.log
+.DS_Store
+Thumbs.db
+
+# ---- 签名密钥 ----
+# 按仓库约定：演示 keystore（android/keystore/ + key.properties）随仓库提交，
+# 以便 CI 与本机一键出包；正式发布请务必替换为自己的 keystore。

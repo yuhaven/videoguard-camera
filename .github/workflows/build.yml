@@ -1,0 +1,42 @@
+name: build-apk
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.47.9
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - run: dart test
+        working-directory: packages/simple_guard_dart
+      - run: flutter pub get
+        working-directory: apps/camera_guard
+      - run: flutter analyze
+        working-directory: apps/camera_guard
+      - run: flutter test
+        working-directory: apps/camera_guard
+      # 演示 keystore 随仓库提交；正式项目请改用 CI secrets
+      - run: |
+          echo "storePassword=videoguard-demo-2026" > key.properties
+          echo "keyPassword=videoguard-demo-2026" >> key.properties
+          echo "keyAlias=videoguard" >> key.properties
+          echo "storeFile=../keystore/videoguard-release.jks" >> key.properties
+        working-directory: apps/camera_guard/android
+      - run: flutter build apk --release
+        working-directory: apps/camera_guard
+      - uses: actions/upload-artifact@v4
+        with:
+          name: app-release-apk
+          path: apps/camera_guard/build/app/outputs/flutter-apk/app-release.apk

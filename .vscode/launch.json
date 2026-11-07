@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "camera_guard (真机/模拟器调试)",
+      "type": "dart",
+      "request": "launch",
+      "program": "apps/camera_guard/lib/main.dart",
+      "cwd": "apps/camera_guard",
+      "flutterMode": "debug"
+    },
+    {
+      "name": "核心包测试",
+      "type": "dart",
+      "request": "launch",
+      "program": "packages/simple_guard_dart/test/simple_guard_test.dart",
+      "cwd": "packages/simple_guard_dart"
+    }
+  ]
+}
