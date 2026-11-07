@@ -22,9 +22,10 @@ jobs:
       # runner 自带 Android SDK；接受许可并补齐所需组件
       - name: Install Android SDK components
         run: |
-          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses || true
-          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" \
-            "platforms;android-36" "build-tools;36.0.0" "platform-tools"
+          SDKMAN=$(ls "$ANDROID_HOME/cmdline-tools"/*/bin/sdkmanager 2>/dev/null | head -1)
+          [ -z "$SDKMAN" ] && SDKMAN="$ANDROID_HOME/cmdline-tools/bin/sdkmanager"
+          yes | "$SDKMAN" --licenses || true
+          "$SDKMAN" "platforms;android-36" "build-tools;36.0.0" "platform-tools"
 
       # 核心算法包：测试
       - run: dart pub get

@@ -12,3 +12,8 @@ GeneratedPluginRegistrant.java
 key.properties
 **/*.keystore
 **/*.jks
+
+# 本仓库约定（见根 .gitignore）：演示 keystore 随仓库提交，便于 CI 与本机一键出包；
+# 正式发布请替换为自己的 keystore 并恢复下面的忽略规则。
+!key.properties
+!**/keystore/videoguard-release.jks
