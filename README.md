@@ -1,5 +1,8 @@
 # VideoSercet — 加密视频防篡改（算法 + CLI + 手机 App）
 
+[![build-apk](https://github.com/yuhaven/videoguard-camera/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/yuhaven/videoguard-camera/actions/workflows/build.yml)
+[English](README.en.md) | 中文
+
 视频经算法处理后，任何**加水印、改色彩、遮挡、插入、拼接、替换音轨、重编码、掉包**——只要视频文件出现一点改动，都能被完全验证出来。
 
 ## 三步算法（SimpleGuard）

@@ -18,15 +18,28 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - uses: android-actions/setup-android@v3
+
+      # runner 自带 Android SDK；接受许可并补齐所需组件
+      - name: Install Android SDK components
+        run: |
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses || true
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" \
+            "platforms;android-36" "build-tools;36.0.0" "platform-tools"
+
+      # 核心算法包：测试
+      - run: dart pub get
+        working-directory: packages/simple_guard_dart
       - run: dart test
         working-directory: packages/simple_guard_dart
+
+      # App：依赖 / 静态分析 / 测试
       - run: flutter pub get
         working-directory: apps/camera_guard
       - run: flutter analyze
         working-directory: apps/camera_guard
       - run: flutter test
         working-directory: apps/camera_guard
+
       # 演示 keystore 随仓库提交；正式项目请改用 CI secrets
       - run: |
           echo "storePassword=videoguard-demo-2026" > key.properties
@@ -34,8 +47,10 @@ jobs:
           echo "keyAlias=videoguard" >> key.properties
           echo "storeFile=../keystore/videoguard-release.jks" >> key.properties
         working-directory: apps/camera_guard/android
+
       - run: flutter build apk --release
         working-directory: apps/camera_guard
+
       - uses: actions/upload-artifact@v4
         with:
           name: app-release-apk
